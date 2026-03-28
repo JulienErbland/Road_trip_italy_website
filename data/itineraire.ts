@@ -16,7 +16,7 @@ export const itineraire: Etape[] = [
     driveTimeMin: 165,
     description: "Carrefour stratégique des Alpes depuis l'Antiquité, Bellinzona a été disputée pendant des siècles entre les cantons suisses, le duché de Milan et les évêques de Côme. Ses trois châteaux — Castelgrande, Montebello et Sasso Corbaro — forment un système défensif unique qui a valu à la ville son inscription au Patrimoine mondial de l'UNESCO en 2000. La vieille ville, avec ses arcades et ses ruelles pavées, conserve un caractère médiéval authentique où l'influence italienne se mêle harmonieusement à la rigueur suisse.",
     reservee: false,
-    imageUrl: 'https://images.unsplash.com/photo-1588668214407-6ea9a6d8c272?w=800&auto=format',
+    imageUrl: 'https://images.unsplash.com/photo-1590736969955-71cc94901144?w=800&auto=format',
     gastronomie: {
       description: "Bellinzona se situe au carrefour de la cuisine suisse alémanique et de la tradition lombarde. Le Tessin possède une identité culinaire propre, marquée par la polenta, les fromages de montagne et les vins locaux comme le Merlot du Tessin.",
       platsIncontournables: [
@@ -177,7 +177,7 @@ export const itineraire: Etape[] = [
     driveTimeMin: 90,
     description: "Inscrite au Patrimoine mondial de l'UNESCO en 2000, Vérone est l'une des villes les plus séduisantes d'Italie. Fondée par les Romains au Ier siècle avant J.-C. au carrefour de deux axes commerciaux majeurs, elle conserve un centre historique d'une densité monumentale exceptionnelle : un amphithéâtre romain parmi les mieux conservés au monde, un forum antique (la Piazza delle Erbe), des palais médiévaux et Renaissance... Shakespeare l'a immortalisée en y situant Roméo et Juliette (1597), alors qu'il n'y avait probablement jamais mis les pieds. Les Véronais ont longtemps protesté de cette « imposture », avant de comprendre que la légende était une aubaine touristique inestimable.",
     reservee: false,
-    imageUrl: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&auto=format',
+    imageUrl: 'https://images.unsplash.com/photo-1564769625905-50e93615e769?w=800&auto=format',
     gastronomie: {
       description: "Vérone est au cœur d'une région viticole mondialement connue : l'Amarone della Valpolicella, le Soave et le Bardolino sont produits dans un rayon de 30 km. La cuisine véronaise reflète cette richesse — le risotto à l'Amarone est un plat emblématique.",
       platsIncontournables: [
@@ -289,7 +289,7 @@ export const itineraire: Etape[] = [
     driveTimeMin: 45,
     description: "Padoue est l'une des plus vieilles villes d'Italie — selon la tradition, elle aurait été fondée par le Troyen Anténor en 1183 avant J.-C. Son université, fondée en 1222, est l'une des plus anciennes d'Occident et la première au monde à avoir accordé un doctorat à une femme (Elena Cornaro Piscopia, en 1678). C'est à Padoue que Galilée a enseigné pendant 18 ans et que William Harvey a découvert la circulation sanguine. Mais la gloire artistique de Padoue repose avant tout sur les fresques que Giotto a peintes entre 1304 et 1306 dans la Chapelle des Scrovegni — un tournant absolu dans l'histoire de l'art occidental.",
     reservee: false,
-    imageUrl: 'https://images.unsplash.com/photo-1515542706656-8e4f53022b0e?w=800&auto=format',
+    imageUrl: 'https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=800&auto=format',
     gastronomie: {
       description: "Padoue bénéficie de la richesse agricole de la plaine du Pô et des produits de la lagune vénitienne. La ville est particulièrement réputée pour ses légumes — le radicchio de Trévise et les asperges blanches de Bassano sont des délices printaniers.",
       platsIncontournables: [
@@ -338,7 +338,7 @@ export const itineraire: Etape[] = [
     driveTimeMin: 75,
     description: "Sirmione s'avance sur une péninsule de 4 km de long dans le Lac de Garde, le plus grand lac d'Italie (370 km²) et le plus chaud — ses eaux douces et thermales attirent depuis l'Antiquité. Le poète latin Catulle, qui y possédait une villa au Ier siècle avant J.-C., l'a immortalisée dans ses poèmes. Le Lago di Garda bénéficie d'un microclimat méditerranéen unique — oliviers, citronniers et lauriers-roses poussent sur ses rives — alors qu'il est encaissé entre les Alpes au nord. Sirmione, avec ses thermes thermaux encore en activité, est un lieu hors du temps.",
     reservee: false,
-    imageUrl: 'https://images.unsplash.com/photo-1533105079780-92b9be482077?w=800&auto=format',
+    imageUrl: 'https://images.unsplash.com/photo-1565003423688-3d14613fd0cd?w=800&auto=format',
     gastronomie: {
       description: "Le Lago di Garda possède une gastronomie lacustre propre, mêlant les poissons du lac (carpione, truite, perche) et les produits méditerranéens de ses rives. L'huile d'olive du Garda, produite sur les rives sud et est du lac, est l'une des huiles les plus réputées d'Italie.",
       platsIncontournables: [
@@ -387,7 +387,7 @@ export const itineraire: Etape[] = [
     driveTimeMin: 90,
     description: "Milan est la deuxième ville d'Italie et sa capitale économique, financière et de la mode. Mais derrière la façade moderne se cache une ville d'une richesse historique et artistique considérable : le Duomo gothique, l'un des plus grands au monde, a nécessité six siècles de travaux (1386-1965). C'est à Milan que Léonard de Vinci a passé vingt ans et peint La Cène (1495-1498), considérée comme le tableau le plus étudié du monde. C'est aussi à Milan que Verdi a triomphé à la Scala et que Mussolini a lancé le fascisme en 1919. Étape de transition vers Bâle, mais pas une étape mineure.",
     reservee: false,
-    imageUrl: 'https://images.unsplash.com/photo-1520175480921-4edfa2983e0f?w=800&auto=format',
+    imageUrl: 'https://images.unsplash.com/photo-1561948955-570b270e7c36?w=800&auto=format',
     gastronomie: {
       description: "La cuisine milanaise est la plus influente d'Italie après la romaine et la napolitaine. Le risotto alla milanese, le cotoletta et l'ossobuco sont connus dans le monde entier — et pourtant, ils sont souvent méconnaissables en dehors de Milan.",
       platsIncontournables: [
@@ -426,6 +426,55 @@ export const itineraire: Etape[] = [
       },
     ],
   },
+  {
+    slug: 'retour-bale',
+    ville: 'Bâle',
+    pays: 'Suisse',
+    dates: { debut: '2025-04-21', fin: '2025-04-21' },
+    coordonnees: BALE_COORDONNEES,
+    distanceKm: RETOUR_BALE_KM,
+    driveTimeMin: RETOUR_BALE_TIME,
+    description: "Retour à Bâle par l'autoroute A2, traversant les Alpes par le tunnel du San Gotthard. La ville de Bâle, sur le coude du Rhin au carrefour de la Suisse, de l'Allemagne et de la France, clôt le voyage. Capitale mondiale de l'art contemporain (Art Basel) et de l'industrie pharmaceutique, elle offre pourtant un vieux quartier médiéval remarquable avec sa cathédrale romane dominant le Rhin — un dernier plaisir avant de poser les valises.",
+    reservee: false,
+    imageUrl: 'https://images.unsplash.com/photo-1541726260-e2b84b1f59a2?w=800&auto=format',
+    gastronomie: {
+      description: "Bâle mêle les traditions culinaires suisse alémanique et alsacienne. Après 14 jours de cuisine italienne, un retour aux saveurs locales s'impose.",
+      platsIncontournables: [
+        "Läckerli de Bâle — pain d'épices aux amandes, miel et kirsch, spécialité de Bâle depuis le XVe siècle",
+        "Zwiebelkuchen — tarte à l'oignon alsacienne, parfaite avec un verre de Riesling",
+        "Fondue au fromage — pour se réchauffer après les Alpes",
+        "Rösti — galette de pommes de terre dorée au beurre, le symbole de la cuisine suisse alémanique"
+      ],
+      restaurants: [
+        {
+          nom: "Restaurant Gifthüttli",
+          description: "La plus ancienne taverne de Bâle (1845), dans la vieille ville. Cuisine suisse traditionnelle dans un décor de bois sculpté.",
+          specialite: "Kalbsbratwurst mit Rösti und Zwiebelsauce"
+        },
+        {
+          nom: "Zum Braunen Mutz",
+          description: "Brasserie historique au bord du Rhin, réputée pour sa bière artisanale et ses plats copieux. Vue sur le Grand Bâle depuis la terrasse.",
+          specialite: "Basler Mehlsuppe — soupe à la farine grillée, plat traditionnel du Carnaval"
+        }
+      ]
+    },
+    sites: [
+      {
+        nom: 'Münster de Bâle',
+        description: "La cathédrale romane et gothique de Bâle, construite entre le XIe et le XVe siècle, domine le Rhin depuis son promontoire. Ses deux tours asymétriques, sa façade ornée de grès rouge des Vosges et sa crypte romane en font l'un des monuments les plus remarquables de Suisse. Érasme de Rotterdam, qui vécut à Bâle et y mourut en 1536, est enterré dans le déambulatoire.",
+        dureeVisite: '45min',
+        imageUrl: 'https://images.unsplash.com/photo-1541726260-e2b84b1f59a2?w=800&auto=format',
+        reservation: { requise: false },
+      },
+      {
+        nom: 'Kunstmuseum Basel',
+        description: "Le plus ancien musée public d'art au monde (1661) possède l'une des collections les plus importantes d'Europe : des primitifs flamands aux expressionnistes allemands, en passant par Holbein l'Ancien, Picasso et Giacometti. Une transition parfaite entre l'art de la Renaissance italienne découvert pendant le voyage et l'art moderne.",
+        dureeVisite: '2h',
+        imageUrl: 'https://images.unsplash.com/photo-1518110925495-5fe2fda0442c?w=800&auto=format',
+        reservation: { requise: false },
+      },
+    ],
+  },
 ]
 
 export function getEtapeBySlug(slug: string): Etape | undefined {
@@ -457,8 +506,8 @@ export function getRemainingStats(selectedSlug: string): RemainingStats {
   const joursEcoules = Math.round((selectedDate.getTime() - new Date(itineraire[0].dates.debut).getTime()) / (1000 * 60 * 60 * 24)) + 1
   const jours = joursTotal - joursEcoules
 
-  const km = etapesRemaining.reduce((acc, e) => acc + e.distanceKm, 0) + RETOUR_BALE_KM
-  const tempsRoute = etapesRemaining.reduce((acc, e) => acc + e.driveTimeMin, 0) + RETOUR_BALE_TIME
+  const km = etapesRemaining.reduce((acc, e) => acc + e.distanceKm, 0)
+  const tempsRoute = etapesRemaining.reduce((acc, e) => acc + e.driveTimeMin, 0)
 
-  return { jours, km, villes: etapesRemaining.length, tempsRoute }
+  return { jours: Math.max(0, jours), km, villes: etapesRemaining.length, tempsRoute }
 }

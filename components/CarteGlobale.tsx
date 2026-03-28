@@ -133,6 +133,7 @@ export default function CarteGlobale({ etapes, selectedSlug, onEtapeSelect }: Pr
 
     const selectedEtape = etapes[selectedIdx]
 
+    map.stop()
     map.flyTo({ center: selectedEtape.coordonnees, zoom: 9, duration: 1200 })
     carMarkerRef.current?.setLngLat(selectedEtape.coordonnees)
 
