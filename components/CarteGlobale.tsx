@@ -153,7 +153,7 @@ export default function CarteGlobale({ etapes, selectedSlug, onEtapeSelect }: Pr
     <div
       ref={containerRef}
       data-testid="carte-globale"
-      className="w-full h-full z-10"
+      className="w-full h-full"
     />
   )
 }
