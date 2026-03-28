@@ -46,6 +46,13 @@ export default function CarteGlobale({ etapes, selectedSlug, onEtapeSelect }: Pr
     map.addControl(new mapboxgl.NavigationControl(), 'top-right')
     mapRef.current = map
 
+    // Force Mapbox to read the container's real dimensions after flex layout resolves
+    map.once('load', () => { map.resize() })
+
+    // Keep map sized correctly if the container ever changes
+    const resizeObserver = new ResizeObserver(() => { map.resize() })
+    resizeObserver.observe(containerRef.current)
+
     map.on('load', () => {
       // Route source (updated dynamically)
       const initialCoords: [number, number][] = [BALE_COORDONNEES, etapes[0].coordonnees]
@@ -118,6 +125,7 @@ export default function CarteGlobale({ etapes, selectedSlug, onEtapeSelect }: Pr
     })
 
     return () => {
+      resizeObserver.disconnect()
       markersRef.current.forEach(m => m.remove())
       markersRef.current = []
       carMarkerRef.current?.remove()
