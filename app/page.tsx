@@ -15,11 +15,11 @@ export default function HomePage() {
   const selectedEtape = itineraire.find(e => e.slug === selectedSlug) ?? itineraire[0]
 
   return (
-    <main>
+    <main className="flex flex-col h-screen">
       <HeroSection selectedSlug={selectedSlug} />
 
       {/* Desktop: 3-column split. Mobile: stacked */}
-      <div className="h-[calc(100vh-200px)] flex flex-col md:flex-row">
+      <div className="flex-1 min-h-0 flex flex-col md:flex-row">
 
         {/* Left: timeline */}
         <aside

@@ -3,7 +3,6 @@
 
 import { useEffect, useRef } from 'react'
 import mapboxgl from 'mapbox-gl'
-import 'mapbox-gl/dist/mapbox-gl.css'
 import type { Etape } from '@/types/itineraire'
 import { BALE_COORDONNEES } from '@/data/itineraire'
 
