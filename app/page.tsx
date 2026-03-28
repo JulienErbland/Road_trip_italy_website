@@ -16,7 +16,7 @@ export default function HomePage() {
 
   return (
     <main>
-      <HeroSection />
+      <HeroSection selectedSlug={selectedSlug} />
 
       {/* Desktop: 3-column split. Mobile: stacked */}
       <div className="h-[calc(100vh-200px)] flex flex-col md:flex-row">
@@ -34,7 +34,7 @@ export default function HomePage() {
         </aside>
 
         {/* Center: map */}
-        <div className="flex-1 min-h-[300px] md:min-h-0">
+        <div className="flex-1 min-h-[300px] md:min-h-0 relative">
           <CarteGlobale
             etapes={itineraire}
             selectedSlug={selectedSlug}
