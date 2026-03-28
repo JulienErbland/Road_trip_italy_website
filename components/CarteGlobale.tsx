@@ -34,103 +34,115 @@ export default function CarteGlobale({ etapes, selectedSlug, onEtapeSelect }: Pr
   useEffect(() => {
     if (!containerRef.current || mapRef.current) return
 
-    mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN!
+    let rafId: number
+    let cleanupMap: mapboxgl.Map | null = null
+    let cleanupObserver: ResizeObserver | null = null
 
-    const map = new mapboxgl.Map({
-      container: containerRef.current,
-      style: 'mapbox://styles/mapbox/dark-v11',
-      center: [10.5, 45.5],
-      zoom: 5.5,
-    })
+    // Delay init until after the browser has painted so flex layout is resolved
+    rafId = requestAnimationFrame(() => {
+      if (!containerRef.current) return
 
-    map.addControl(new mapboxgl.NavigationControl(), 'top-right')
-    mapRef.current = map
+      mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN!
 
-    // Force Mapbox to read the container's real dimensions after flex layout resolves
-    map.once('load', () => { map.resize() })
-
-    // Keep map sized correctly if the container ever changes
-    const resizeObserver = new ResizeObserver(() => { map.resize() })
-    resizeObserver.observe(containerRef.current)
-
-    map.on('load', () => {
-      // Route source (updated dynamically)
-      const initialCoords: [number, number][] = [BALE_COORDONNEES, etapes[0].coordonnees]
-      map.addSource('route', {
-        type: 'geojson',
-        data: {
-          type: 'Feature',
-          properties: {},
-          geometry: { type: 'LineString', coordinates: initialCoords },
-        },
-      })
-      map.addLayer({
-        id: 'route',
-        type: 'line',
-        source: 'route',
-        paint: {
-          'line-color': '#c9a84c',
-          'line-width': 2,
-          'line-dasharray': [2, 2],
-          'line-opacity': 0.8,
-        },
+      const map = new mapboxgl.Map({
+        container: containerRef.current,
+        style: 'mapbox://styles/mapbox/dark-v11',
+        center: [10.5, 45.5],
+        zoom: 5.5,
       })
 
-      // Basel start marker
-      const baleEl = document.createElement('div')
-      baleEl.style.cssText = `
-        width: 10px; height: 10px;
-        border-radius: 50%;
-        background: #c9a84c;
-        border: 2px solid #1a1a2e;
-        opacity: 0.6;
-      `
-      new mapboxgl.Marker(baleEl).setLngLat(BALE_COORDONNEES).addTo(map)
+      map.addControl(new mapboxgl.NavigationControl(), 'top-right')
+      mapRef.current = map
+      cleanupMap = map
 
-      // Étape markers
-      etapes.forEach(etape => {
-        const el = document.createElement('div')
-        el.className = 'mapbox-marker'
-        el.style.cssText = `
-          width: 12px; height: 12px;
+      // Resize after style loads in case container changed
+      map.once('load', () => { map.resize() })
+
+      // Stay in sync if window is resized
+      const resizeObserver = new ResizeObserver(() => { map.resize() })
+      resizeObserver.observe(containerRef.current!)
+      cleanupObserver = resizeObserver
+
+      map.on('load', () => {
+        // Route source (updated dynamically)
+        const initialCoords: [number, number][] = [BALE_COORDONNEES, etapes[0].coordonnees]
+        map.addSource('route', {
+          type: 'geojson',
+          data: {
+            type: 'Feature',
+            properties: {},
+            geometry: { type: 'LineString', coordinates: initialCoords },
+          },
+        })
+        map.addLayer({
+          id: 'route',
+          type: 'line',
+          source: 'route',
+          paint: {
+            'line-color': '#c9a84c',
+            'line-width': 2,
+            'line-dasharray': [2, 2],
+            'line-opacity': 0.8,
+          },
+        })
+
+        // Basel start marker
+        const baleEl = document.createElement('div')
+        baleEl.style.cssText = `
+          width: 10px; height: 10px;
           border-radius: 50%;
           background: #c9a84c;
           border: 2px solid #1a1a2e;
-          cursor: pointer;
-          transition: transform 0.2s;
+          opacity: 0.6;
         `
-        el.addEventListener('mouseenter', () => { el.style.transform = 'scale(1.5)' })
-        el.addEventListener('mouseleave', () => { el.style.transform = 'scale(1)' })
-        el.addEventListener('click', () => onEtapeSelect(etape.slug))
+        new mapboxgl.Marker(baleEl).setLngLat(BALE_COORDONNEES).addTo(map)
 
-        const marker = new mapboxgl.Marker(el)
-          .setLngLat(etape.coordonnees)
+        // Étape markers
+        etapes.forEach(etape => {
+          const el = document.createElement('div')
+          el.className = 'mapbox-marker'
+          el.style.cssText = `
+            width: 12px; height: 12px;
+            border-radius: 50%;
+            background: #c9a84c;
+            border: 2px solid #1a1a2e;
+            cursor: pointer;
+            transition: transform 0.2s;
+          `
+          el.addEventListener('mouseenter', () => { el.style.transform = 'scale(1.5)' })
+          el.addEventListener('mouseleave', () => { el.style.transform = 'scale(1)' })
+          el.addEventListener('click', () => onEtapeSelect(etape.slug))
+
+          const marker = new mapboxgl.Marker(el)
+            .setLngLat(etape.coordonnees)
+            .addTo(map)
+
+          markersRef.current.push(marker)
+        })
+
+        // Car marker
+        const carEl = document.createElement('div')
+        carEl.innerHTML = CAR_SVG
+        carEl.style.cssText = `
+          cursor: pointer;
+          filter: drop-shadow(0 0 6px rgba(201,168,76,0.7));
+          transition: all 0.3s ease;
+        `
+        const carMarker = new mapboxgl.Marker(carEl)
+          .setLngLat(etapes[0].coordonnees)
           .addTo(map)
-
-        markersRef.current.push(marker)
+        carMarkerRef.current = carMarker
       })
-
-      // Car marker
-      const carEl = document.createElement('div')
-      carEl.innerHTML = CAR_SVG
-      carEl.style.cssText = `
-        cursor: pointer;
-        filter: drop-shadow(0 0 6px rgba(201,168,76,0.7));
-        transition: all 0.3s ease;
-      `
-      const carMarker = new mapboxgl.Marker(carEl)
-        .setLngLat(etapes[0].coordonnees)
-        .addTo(map)
-      carMarkerRef.current = carMarker
     })
 
     return () => {
-      resizeObserver.disconnect()
+      cancelAnimationFrame(rafId)
+      cleanupObserver?.disconnect()
       markersRef.current.forEach(m => m.remove())
       markersRef.current = []
       carMarkerRef.current?.remove()
       carMarkerRef.current = null
-      map.remove()
+      cleanupMap?.remove()
       mapRef.current = null
     }
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
