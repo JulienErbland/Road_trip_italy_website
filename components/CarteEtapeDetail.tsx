@@ -1,4 +1,5 @@
 // components/CarteEtapeDetail.tsx
+import Link from 'next/link'
 import type { Etape } from '@/types/itineraire'
 import BadgeReserve from './BadgeReserve'
 import SiteCard from './SiteCard'
@@ -40,6 +41,14 @@ export default function CarteEtapeDetail({ etape }: { etape: Etape }) {
           <SiteCard key={site.nom} site={site} />
         ))}
       </div>
+
+      <Link
+        href={`/etape/${etape.slug}`}
+        className="mt-5 flex items-center justify-center gap-2 w-full py-2 rounded-lg text-sm font-medium transition-opacity hover:opacity-80"
+        style={{ backgroundColor: 'var(--color-surface)', border: '1px solid var(--color-border)', color: 'var(--color-gold)' }}
+      >
+        Gastronomie, carte locale &amp; plus →
+      </Link>
     </div>
   )
 }
