@@ -15,11 +15,11 @@ export default function HomePage() {
   const selectedEtape = itineraire.find(e => e.slug === selectedSlug) ?? itineraire[0]
 
   return (
-    <main className="flex flex-col h-screen">
+    <main>
       <HeroSection selectedSlug={selectedSlug} />
 
       {/* Desktop: 3-column split. Mobile: stacked */}
-      <div className="flex-1 min-h-0 flex flex-col md:flex-row">
+      <div className="flex flex-col md:flex-row" style={{ height: '600px' }}>
 
         {/* Left: timeline */}
         <aside
@@ -33,8 +33,8 @@ export default function HomePage() {
           />
         </aside>
 
-        {/* Center: map */}
-        <div className="flex-1 min-h-[300px] md:min-h-0 relative">
+        {/* Center: map — explicit height so Mapbox can read it at init */}
+        <div className="flex-1 relative" style={{ minHeight: '400px' }}>
           <CarteGlobale
             etapes={itineraire}
             selectedSlug={selectedSlug}
@@ -44,7 +44,7 @@ export default function HomePage() {
 
         {/* Right: detail panel */}
         <aside
-          className="md:w-80 shrink-0 border-l overflow-hidden"
+          className="md:w-80 shrink-0 border-l overflow-y-auto"
           style={{ borderColor: 'var(--color-border)', backgroundColor: 'var(--color-background)' }}
         >
           <CarteEtapeDetail etape={selectedEtape} />
