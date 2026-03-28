@@ -33,8 +33,8 @@ export default function HomePage() {
           />
         </aside>
 
-        {/* Center: map — explicit height so Mapbox can read it at init */}
-        <div className="flex-1 relative" style={{ minHeight: '400px' }}>
+        {/* Center: map */}
+        <div className="flex-1 relative h-full">
           <CarteGlobale
             etapes={itineraire}
             selectedSlug={selectedSlug}
