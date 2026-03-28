@@ -1,40 +1,81 @@
 // components/HeroSection.tsx
-import { itineraire } from '@/data/itineraire'
+import { itineraire, getElapsedStats, getRemainingStats } from '@/data/itineraire'
 
-export default function HeroSection() {
+function formatDuration(minutes: number): string {
+  const h = Math.floor(minutes / 60)
+  const m = minutes % 60
+  return m > 0 ? `${h}h${m.toString().padStart(2, '0')}` : `${h}h`
+}
+
+type Props = {
+  selectedSlug: string | null
+}
+
+export default function HeroSection({ selectedSlug }: Props) {
+  const activeSlug = selectedSlug ?? itineraire[0].slug
+  const elapsed = getElapsedStats(activeSlug)
+  const remaining = getRemainingStats(activeSlug)
+
   return (
-    <header className="px-6 py-12 text-center border-b" style={{ borderColor: 'var(--color-border)' }}>
+    <header className="px-6 py-10 text-center border-b" style={{ borderColor: 'var(--color-border)' }}>
       <p className="text-sm tracking-[0.3em] uppercase mb-3" style={{ color: 'var(--color-gold)' }}>
         Road Trip
       </p>
       <h1
-        className="text-5xl md:text-7xl font-bold mb-4"
+        className="text-4xl md:text-6xl font-bold mb-3"
         style={{ fontFamily: 'var(--font-serif)', color: 'var(--color-cream)' }}
       >
         Road Trip Italie
       </h1>
-      <p className="text-xl mb-8" style={{ color: 'var(--color-muted)' }}>
+      <p className="text-lg mb-6" style={{ color: 'var(--color-muted)' }}>
         8 Avril — 21 Avril 2025
       </p>
-      <div className="flex justify-center gap-8 text-sm">
-        <Stat value="14" label="jours" />
-        <Stat value={`${itineraire.length}`} label="étapes" />
-        <Stat value="~2 500 km" label="parcourus" />
+
+      {/* Stats row: Parcourus */}
+      <div className="mb-3">
+        <p className="text-xs tracking-widest uppercase mb-2" style={{ color: 'var(--color-gold)' }}>
+          Parcourus
+        </p>
+        <div className="flex justify-center gap-6 text-sm">
+          <Stat value={`${elapsed.jours}`} label="jours" />
+          <Stat value={`${elapsed.km} km`} label="parcourus" />
+          <Stat value={`${elapsed.villes}`} label="étapes" />
+          <Stat value={formatDuration(elapsed.tempsRoute)} label="de route" />
+        </div>
+      </div>
+
+      {/* Divider */}
+      <div className="w-16 mx-auto my-3" style={{ borderTop: '1px solid var(--color-border)' }} />
+
+      {/* Stats row: Restants */}
+      <div>
+        <p className="text-xs tracking-widest uppercase mb-2" style={{ color: 'var(--color-muted)' }}>
+          Restants
+        </p>
+        <div className="flex justify-center gap-6 text-sm">
+          <Stat value={`${remaining.jours}`} label="jours" muted />
+          <Stat value={`${remaining.km} km`} label="restants" muted />
+          <Stat value={`${remaining.villes}`} label="étapes" muted />
+          <Stat value={formatDuration(remaining.tempsRoute)} label="de route" muted />
+        </div>
       </div>
     </header>
   )
 }
 
-function Stat({ value, label }: { value: string; label: string }) {
+function Stat({ value, label, muted = false }: { value: string; label: string; muted?: boolean }) {
   return (
     <div className="text-center">
-      <p style={{ color: 'var(--color-muted)' }}>
-        <span className="text-2xl font-bold" style={{ color: 'var(--color-gold)', fontFamily: 'var(--font-serif)' }}>
-          {value}
-        </span>
-        {' '}
-        {label}
-      </p>
+      <div
+        className="text-xl font-bold"
+        style={{
+          color: muted ? 'var(--color-muted)' : 'var(--color-gold)',
+          fontFamily: 'var(--font-serif)',
+        }}
+      >
+        {value}
+      </div>
+      <div className="text-xs" style={{ color: 'var(--color-muted)' }}>{label}</div>
     </div>
   )
 }
