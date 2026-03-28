@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { itineraire, getEtapeBySlug } from '@/data/itineraire'
 import SiteCard from '@/components/SiteCard'
+import GastronomieSection from '@/components/GastronomieSection'
 import BadgeReserve from '@/components/BadgeReserve'
 import CarteLocaleClient from '@/components/CarteLocaleClient'
 
@@ -84,9 +85,25 @@ export default async function EtapePage({ params }: { params: Promise<{ slug: st
           Sites à visiter
         </h2>
         {etape.sites.map(site => (
-          <SiteCard key={site.nom} site={site} />
+          <div key={site.nom} className="mb-4">
+            {site.imageUrl && (
+              <div className="relative w-full h-40 rounded-t-lg overflow-hidden">
+                <Image
+                  src={site.imageUrl}
+                  alt={site.nom}
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            )}
+            <div className={site.imageUrl ? 'rounded-b-lg overflow-hidden' : ''}>
+              <SiteCard site={site} />
+            </div>
+          </div>
         ))}
       </section>
+
+      <GastronomieSection gastronomie={etape.gastronomie} />
     </main>
   )
 }
